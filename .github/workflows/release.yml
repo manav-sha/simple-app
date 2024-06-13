@@ -1,0 +1,30 @@
+name: Release with tag push
+
+on:
+  push:
+    tags:
+      - "*"
+    branches:
+      - "feature/github-actions-automated-test"
+
+jobs:
+  Release-tag-push:
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11"]
+    steps:
+      - name: Checking out the repository
+        uses: actions/checkout@v3
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v4
+        with:
+          python-version: ${{ matrix.python-version }}
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install -e .[dev]
+      - name: Create exe file
+        run: >
+          cd .\super_gcd\
+          pyinstaller --onefile __main__.py
