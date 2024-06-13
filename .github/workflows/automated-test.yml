@@ -34,3 +34,6 @@ jobs:
       - name: Test with pytest
         run: |
           pytest
+      - name: Get the code coverage
+        run: |
+          pytest --cov=super_gcd tests/
