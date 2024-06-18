@@ -30,7 +30,7 @@ jobs:
           pyinstaller --onefile __main__.py
       - name: Test
         run : |
-          cd super_gcd\dist\
+          cp super_gcd\dist\__main__.exe __main__.exe
           ls
       - name: Release
         uses: softprops/action-gh-release@v2
