@@ -3,7 +3,7 @@ name: Automated test and lint
 on:
   push:
     branches:
-      - "**"
+      - "main"
   pull_request:
     branches:
       - "develop"
