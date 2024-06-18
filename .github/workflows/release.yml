@@ -28,6 +28,9 @@ jobs:
         run: |
           cd .\super_gcd\
           pyinstaller --onefile __main__.py
+      - name: Test
+        run : |
+          dir /AD
       - name: Release
         uses: softprops/action-gh-release@v2
         if: startsWith(github.ref, 'refs/tags/')
